@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String url = "/account_activity.html";
-        if(username.equals("mailto:jsmith@toba.com")&&password.equals("letmein")){
+        if(username.equals("jsmith@toba.com")&&password.equals("letmein")){
             
             getServletContext().getRequestDispatcher(url).forward(request, response);
         
