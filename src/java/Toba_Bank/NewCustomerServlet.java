@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,6 +40,10 @@ public class NewCustomerServlet extends HttpServlet {
         String zipcode = request.getParameter("zipcode");
         String email = request.getParameter("email");
         
+         //temp username and password
+        String username = (lastName + zipcode);
+        String password ="wecome1";
+        
         String url = "/success.html";
         
         String message;
@@ -47,8 +52,15 @@ public class NewCustomerServlet extends HttpServlet {
                 firstName.isEmpty() || lastName.isEmpty()|| phone.isEmpty()|| address.isEmpty()
                         || city.isEmpty()|| state.isEmpty()|| zipcode.isEmpty()|| email.isEmpty()){
             message = "Please fill out all the form fields.";
+            // user bean
+        HttpSession session = request.getSession();
+        
+        User user = new User(firstName, lastName, phone, address, city, state, zipcode,
+                email,username,password);
+        session.setAttribute("user",user);
             url = "/new_customer.jsp"; 
              request.setAttribute("message", message);
+              UserDB.insert(user);
                 
             }
        
@@ -66,6 +78,16 @@ public class NewCustomerServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
+       
+        
+       
+        
+       
+        
+        
+        
+        
+        
         
     }
 

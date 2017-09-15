@@ -12,6 +12,10 @@
         <servlet-name>TransactionServlet</servlet-name>
         <servlet-class>Toba_Bank.TransactionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ResetPassword</servlet-name>
+        <servlet-class>Toba_Bank.ResetPasswordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -20,21 +24,23 @@
         <servlet-name>NewCustomerServlet</servlet-name>
         <url-pattern>/NewCustomer</url-pattern>
     </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>TransactionServlet</servlet-name>
         <url-pattern>/TransactionServlet</url-pattern>
     </servlet-mapping>
-    
     <error-page>
         <error-code>404</error-code>
         <location>/error_404.jsp</location>
     </error-page>
-    
     <error-page>
         <exception-type>java.lang.Throwable</exception-type>
         <location>/error_java.jsp</location>
     </error-page>
-    
+    <servlet-mapping>
+        <servlet-name>ResetPassword</servlet-name>
+        <url-pattern>/ResetPassword</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

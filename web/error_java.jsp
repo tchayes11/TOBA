@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <c:import url="/includes/header.html" />
         <title></title>
     </head>
     <body>
@@ -19,5 +20,7 @@
         <h2>Details</h2>
         <p>Type: {pageContext.exception["class"]}</p>
         <p>Message: {pageContext.exception.message}</p>
+        
+         <c:import url="/includes/footer.jsp"/>
     </body>
 </html>

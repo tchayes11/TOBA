@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author TinaCH
  */
-public class TransactionServlet extends HttpServlet {
+public class ResetPasswordServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,18 +32,49 @@ public class TransactionServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        
+        
+        
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        String url = "/Account_activity.jsp";
+
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "reset";
+        }
+        if (action.equals("reset")) {
+
+            String password = request.getParameter("password");
+            String message;
+
+            user.setPassword(password);
+            message = "";
+            url = "/Account_activity.jsp";
+            session.setAttribute("user", user);
+
+            request.setAttribute("message", message);
+            UserDB.update(user);
+        }
+
+        getServletContext()
+                .getRequestDispatcher(url)
+                .forward(request, response);
+    
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet TransactionServlet</title>");            
+            out.println("<title>Servlet ResetPassword</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet TransactionServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ResetPassword at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

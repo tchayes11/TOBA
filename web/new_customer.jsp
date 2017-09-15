@@ -5,11 +5,14 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %> 
+<c:import url="/includes/header.html"/>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="styles.css" type="text/css"/>
+         
         <title>TOBA New Customer</title>
     </head>
     <body>
@@ -18,7 +21,7 @@
         
         <form action="NewCustomer" method ="post">
             
-            <input type="hidden" name="action" value="add">
+            in<put type="hidden" name="action" value="add">
             
             <label>First Name</label>
             <input type ="text" name ="firstName"><br>
@@ -50,5 +53,7 @@
             
             
         </form>
+        
+         <c:import url="/includes/footer.jsp"/>
     </body>
 </html>
