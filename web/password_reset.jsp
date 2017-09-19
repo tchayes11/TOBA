@@ -16,7 +16,7 @@
     <body>
         <h1>Reset your password</h1>
         <form action="ResetPasswordServlet" method="get"> 
-            <input type="hidden" name="action" value="add">
+            <input type="hidden" name="action" value="reset">
             <label>Username:</label>
             <span>${user.username}</span><br>
             <label>Old Password:</label>

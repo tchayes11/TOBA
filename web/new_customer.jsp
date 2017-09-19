@@ -15,6 +15,14 @@
          
         <title>TOBA New Customer</title>
     </head>
+    <nav>
+            <a href="index.jsp">Home</a><br>
+            <a href="login.jsp">Login</a><br>
+            <a href="account_activity.jsp">Account Activity</a><br>
+            <a href="transaction.jsp">Transactions</a><br>
+            <a href ="new_customer.jsp">New Customer Sign Up page</a><br>
+            <a href ="password_reset.jsp">Reset password page</a><br>
+        </nav>
     <body>
         <h1>New Customer</h1>
         <p><i>${message}</i><p>

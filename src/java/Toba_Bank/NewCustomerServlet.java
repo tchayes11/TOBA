@@ -31,6 +31,10 @@ public class NewCustomerServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+          
+        
+        
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String phone = request.getParameter("phone");
@@ -44,7 +48,7 @@ public class NewCustomerServlet extends HttpServlet {
         String username = (lastName + zipcode);
         String password ="wecome1";
         
-        String url = "/success.html";
+        String url = "/success.jsp";
         
         String message;
         if(firstName ==null || lastName == null || phone == null || address == null
