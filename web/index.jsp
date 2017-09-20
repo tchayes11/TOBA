@@ -16,6 +16,7 @@
     <body>
         <h1>TOBA Bank</h1>
         <p>Titan Online Banking</p>
+        <p>Banking for everyone that is online</p>
         <nav>
             <a href="index.jsp">Home</a><br>
             <a href="login.jsp">Login</a><br>

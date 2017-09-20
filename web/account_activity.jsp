@@ -15,14 +15,23 @@
         <title>TOBA Bank</title>
     </head>
     <body>
+        <nav>
+            <a href="index.jsp">Home</a><br>
+            <a href="login.jsp">Login</a><br>
+            <a href="account_activity.jsp">Account Activity</a><br>
+            <a href="transaction.jsp">Transactions</a><br>
+            <a href ="new_customer.jsp">New Customer Sign Up page</a><br>
+            <a href ="password_reset.jsp">Reset password page</a><br>
+        </nav>
         
         <h2>Customer Account Activity</h2>
         <c:choose>
-            <c:if test="${user !=null}">
+            <c:if test="${sessionScope.user !=null}">
                 <p>Welcome&nbsp;${User.firstName}&nbsp;${User.lastName}</p>
             </c:if>
-            <c:if test ="${user == null}">
+            <c:if test ="${sessionScope.user == null}">
                 <p>Not Logged In</p>
+                <p>Go to <a href="login.jsp">to log in</a></p>
             </c:if>
         </c:choose>
                 

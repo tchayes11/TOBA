@@ -14,8 +14,10 @@
         <title>TOBA Reset Password</title>
     </head>
     <body>
-        <h1>Reset your password</h1>
-        <form action="ResetPasswordServlet" method="get"> 
+        <p>Reset your password below</p>
+        <h1>${message}</h1>
+        
+        <form action="reset" method="get"> 
             <input type="hidden" name="action" value="reset">
             <label>Username:</label>
             <span>${user.username}</span><br>

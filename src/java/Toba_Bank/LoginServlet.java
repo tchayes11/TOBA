@@ -11,7 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 /**
  *
  * @author TinaCH
@@ -33,10 +33,15 @@ public class LoginServlet extends HttpServlet {
         
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String url = "/account_activity.jsp";
-        if(username.equals("jsmith@toba.com")&&password.equals("letmein")){
+        String url = "";
+        
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        
+        if(user.getUsername().equals("username")&&user.getPassword().equals("password")){
             
             getServletContext().getRequestDispatcher(url).forward(request, response);
+          url="/account_activity.jsp";  
         
         }
         else{

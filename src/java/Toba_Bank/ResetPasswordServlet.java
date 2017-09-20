@@ -38,7 +38,7 @@ public class ResetPasswordServlet extends HttpServlet {
         
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        String url = "/Account_activity.jsp";
+        String url = "/account_activity.jsp";
 
         String action = request.getParameter("action");
         if (action == null) {
@@ -51,7 +51,7 @@ public class ResetPasswordServlet extends HttpServlet {
 
             user.setPassword(password);
             message = "";
-            url = "/Account_activity.jsp";
+            url = "/account_activity.jsp";
             session.setAttribute("user", user);
 
             request.setAttribute("message", message);

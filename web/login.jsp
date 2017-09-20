@@ -9,8 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %> 
+        <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %> 
         <c:import url="/includes/header.html"/>
+        //<jsp:include page= "/includes/header.html" />
+        
         <title>TOBA</title>
     </head>
     <body>
@@ -23,7 +25,7 @@
             <a href ="password_reset.jsp">Reset password page</a><br>
         </nav>
         <h3>Login</h3>
-        <form action="LoginServlet" method ="post">
+        <form action="Login" method ="post">
             
             <input type="hidden" name="action" value="add">
             

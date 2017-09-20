@@ -15,6 +15,14 @@
         <title>TOBA Success</title>
     </head>
     <body>
+        <nav>
+            <a href="index.jsp">Home</a><br>
+            <a href="login.jsp">Login</a><br>
+            <a href="account_activity.jsp">Account Activity</a><br>
+            <a href="transaction.jsp">Transactions</a><br>
+            <a href ="new_customer.jsp">New Customer Sign Up page</a><br>
+            <a href ="password_reset.jsp">Reset password page</a><br>
+        </nav>
         <h1>Your account has been successfully created thank you.</h1>
         
         <p>Here is all the information for your enrollment</p>
