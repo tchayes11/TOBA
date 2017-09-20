@@ -3,11 +3,12 @@
     Created on : Sep 1, 2017, 1:51:52 PM
     Author     : TinaCH
 --%>
+ <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %> 
+        <c:import url="/header.html"/>
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %>
- <c:import url="/includes/header.html"/> 
+  
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,6 +48,7 @@
         <label>Password:</label>
         <span>${user.password}</span><br>
         
-        <c:import url="/includes/footer.jsp"/>
+        
     </body>
+    <c:import url="/footer.jsp"/>  
 </html>

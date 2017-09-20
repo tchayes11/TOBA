@@ -4,12 +4,13 @@
     Author     : TinaCH
 --%>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <c:import url="/includes/header.html" />
+         <c:import url="/header.html" />
         <title></title>
     </head>
     <body>
@@ -21,6 +22,7 @@
         <p>Type: {pageContext.exception["class"]}</p>
         <p>Message: {pageContext.exception.message}</p>
         
-         <c:import url="/includes/footer.jsp"/>
+        
     </body>
+    <c:import url="/footer.jsp"/>  
 </html>

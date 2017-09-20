@@ -3,15 +3,17 @@
     Created on : Sep 18, 2017, 4:37:14 PM
     Author     : TinaCH
 --%>
+ <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %> 
+        <c:import url="/header.html"/>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %> 
-        <c:import url="/includes/header.html"/>
-        //<jsp:include page= "/includes/header.html" />
+         
+        
+      
         
         <title>TOBA</title>
     </head>
@@ -39,8 +41,9 @@
             <input type= "submit" value="Login" id="submit">
             
          </form>
-         <c:import url="/includes/footer.jsp"/>  
+          
     </body>
+    <c:import url="/footer.jsp"/>  
      
     
     

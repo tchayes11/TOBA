@@ -3,10 +3,11 @@
     Created on : Aug 24, 2017, 2:34:55 PM
     Author     : TinaCH
 --%>
+ <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %> 
+        <c:import url="/header.html"/>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %> 
-<c:import url="/includes/header.html"/>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,7 +30,7 @@
         
         <form action="NewCustomer" method ="post">
             
-            in<put type="hidden" name="action" value="add">
+            <input type="hidden" name="action" value="add">
             
             <label>First Name</label>
             <input type ="text" name ="firstName"><br>
@@ -62,6 +63,7 @@
             
         </form>
         
-         <c:import url="/includes/footer.jsp"/>
+         
     </body>
+    <c:import url="/footer.jsp"/>  
 </html>
