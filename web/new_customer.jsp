@@ -28,7 +28,7 @@
         <h1>New Customer</h1>
         <p><i>${message}</i><p>
         
-        <form action="NewCustomer" method ="post">
+        <form action="NewCustomerServlet" method ="post">
             
             <input type="hidden" name="action" value="add">
             

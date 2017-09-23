@@ -1,12 +1,6 @@
-<%-- 
-    Document   : success
-    Created on : Sep 1, 2017, 1:51:52 PM
-    Author     : TinaCH
---%>
+
  <%@ taglib prefix="c" uri ="http://java.sun.com/jsp/jstl/core" %> 
         <c:import url="/header.html"/>
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
   
 <!DOCTYPE html>
@@ -15,6 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>TOBA Success</title>
     </head>
+        <jsp:useBean id = "user" class = "Toba_Bank.User" scope = 'request'/>
     <body>
         <nav>
             <a href="index.jsp">Home</a><br>
@@ -49,6 +44,9 @@
         <span>${user.password}</span><br>
         
         
+    
+
+       
     </body>
     <c:import url="/footer.jsp"/>  
 </html>

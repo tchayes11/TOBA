@@ -51,37 +51,29 @@ public class NewCustomerServlet extends HttpServlet {
         String url = "/success.jsp";
         
         String message;
-        if(firstName ==null || lastName == null || phone == null || address == null
-                || city == null || state == null || zipcode == null || email == null ||
-                firstName.isEmpty() || lastName.isEmpty()|| phone.isEmpty()|| address.isEmpty()
-                        || city.isEmpty()|| state.isEmpty()|| zipcode.isEmpty()|| email.isEmpty()){
+        if(firstName.isEmpty() || lastName.isEmpty() || phone.isEmpty() || address.isEmpty()
+                || city.isEmpty() || state.isEmpty() || zipcode.isEmpty() || email.isEmpty() )
+                {
             message = "Please fill out all the form fields.";
+            request.setAttribute("message", message);
+            url = "/new_customer.jsp"; 
+            
+        }
+        
+        else{  
             // user bean
         HttpSession session = request.getSession();
         
         User user = new User(firstName, lastName, phone, address, city, state, zipcode,
-                email,username,password);
+                email);
         session.setAttribute("user",user);
-            url = "/new_customer.jsp"; 
-             request.setAttribute("message", message);
-              UserDB.insert(user);
-                
-            }
-       
+         url ="/success.jsp";  
         
-        getServletContext().getRequestDispatcher(url).forward(request, response);
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet NewCustomerServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet NewCustomerServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+             
+              //UserDB.insert(user);
+        }  
+            getServletContext().getRequestDispatcher(url).forward(request, response);
+       
        
         
        

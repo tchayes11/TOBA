@@ -48,32 +48,23 @@ public class ResetPasswordServlet extends HttpServlet {
 
             String password = request.getParameter("password");
             String message;
-
+            url = "/account_activity.jsp";
+            if(user == null)
+                url="/login.jsp";
+            
             user.setPassword(password);
             message = "";
-            url = "/account_activity.jsp";
             session.setAttribute("user", user);
 
             request.setAttribute("message", message);
-            UserDB.update(user);
+            //UserDB.update(user);
         }
 
         getServletContext()
                 .getRequestDispatcher(url)
                 .forward(request, response);
     
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ResetPassword</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ResetPassword at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        
         
     }
 
