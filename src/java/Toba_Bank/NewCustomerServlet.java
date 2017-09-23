@@ -49,42 +49,48 @@ public class NewCustomerServlet extends HttpServlet {
         String password ="wecome1";
         
         String url = "/success.jsp";
+         HttpSession session = request.getSession();
         
         String message;
         if(firstName.isEmpty() || lastName.isEmpty() || phone.isEmpty() || address.isEmpty()
                 || city.isEmpty() || state.isEmpty() || zipcode.isEmpty() || email.isEmpty() )
                 {
             message = "Please fill out all the form fields.";
-            request.setAttribute("message", message);
             url = "/new_customer.jsp"; 
+            request.setAttribute("message", message);
+            
             
         }
         
         else{  
-            // user bean
-        HttpSession session = request.getSession();
-        
-        User user = new User(firstName, lastName, phone, address, city, state, zipcode,
-                email);
-        session.setAttribute("user",user);
-         url ="/success.jsp";  
-        
-             
-              //UserDB.insert(user);
-        }  
-            getServletContext().getRequestDispatcher(url).forward(request, response);
+              url = "/success.jsp";
+            User user = (User)request.getAttribute("user");
+            if(user == null)
+            {
+                user = new User();
+                user.setAddress(address);
+                user.setCity(city);
+                user.setEmail(email);
+                user.setFirstName(firstName);
+                user.setLastName(lastName);
+                user.setPassword(password);
+                user.setPhone(phone);
+                user.setState(state);
+                user.setUsername(username);
+                user.setPassword(password);
+                request.setAttribute("user", user);
+            }
+
+        }
        
+        
+        
+     getServletContext().getRequestDispatcher(url).forward(request, response);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+        }
        
-        
-       
-        
-       
-        
-        
-        
-        
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -127,3 +133,6 @@ public class NewCustomerServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
+
+

@@ -19,7 +19,7 @@
         <p><i>${message}</i></p>
         
         <form action="ResetPasswordServlet" method="get"> 
-            <input type="hidden" name="action" value="reset">
+            <input type="hidden" name="action" value="reset"><br>
             <label>Username:</label>
             <span>${user.username}</span><br>
             <label>Old Password:</label>
