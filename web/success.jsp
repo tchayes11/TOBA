@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>TOBA Success</title>
     </head>
-        <jsp:useBean id = "user" class = "Toba_Bank.User" scope = 'request'/>
+       <%-- <jsp:useBean id = "user" class = "Toba_Bank.User" scope = 'request'/>--%>
     <body>
         <nav>
             <a href="index.jsp">Home</a><br>

@@ -28,12 +28,14 @@
         
         <h2>Customer Account Activity</h2>
         <c:choose>
-            <c:when test="${user.user !=null}">
+            <c:when test="${sessionScope.user !=null}">
+                <br><br><br>
                 <p>Welcome${User.firstName}${User.lastName}</p>
                 
             </c:when>
             <c:otherwise>
-                <p>"${user.user == null}"</p>
+                <p>"${sessionScope.user == null}"</p>
+                <br><br><br>
                 <p>Not Logged In</p>
                 <p>Go to <a href="login.jsp">Login page</a></p>
             </c:otherwise>

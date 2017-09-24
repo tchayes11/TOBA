@@ -24,11 +24,12 @@
             <a href ="new_customer.jsp">New Customer Sign Up page</a><br>
             <a href ="password_reset.jsp">Reset password page</a><br>
         </nav>
+
     <body>
         <h1>New Customer</h1>
         <p><i>${message}</i><p>
         
-        <form action="NewCustomerServlet" method ="post">
+        <form action="NewCustomer" method ="post">
             
             <input type="hidden" name="action" value="add">
             

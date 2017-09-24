@@ -109,6 +109,7 @@ public class User implements Serializable {
     }
     public void setUsername(String username){
         this.username = username;
+        
     } public String getPassword(){
         return password;
     }
@@ -144,7 +145,7 @@ public class User implements Serializable {
         
         }
     public User(String firstName, String lastName, String phone,String address,
-            String city,String state, String zipcode, String email,String username,String password ){
+            String city,String state, String zipcode, String email){
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
@@ -157,9 +158,9 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    User(String firstName, String lastName, String phone, String address, String city, String state, String zipcode, String email) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   // User(String firstName, String lastName, String phone, String address, String city, String state, String zipcode, String email) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   // }
 
     public String getFirstName() {
         return firstName;

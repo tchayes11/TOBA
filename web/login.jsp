@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         
+         <link rel="stylesheet" href="styles.css" type="text/css"/>
         
       
         
@@ -31,10 +31,10 @@
             
             <input type="hidden" name="action" value="add">
             
-            <label>User Name</label>
+            <label>User Name:</label>
             <input type ="text" name ="username" required ><br>
             
-            <label>Password</label>
+            <label>Password:</label>
             <input type ="text" name ="password" required ><br>
             
             <label>&nbsp;</label>

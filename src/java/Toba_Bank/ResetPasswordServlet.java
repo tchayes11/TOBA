@@ -33,9 +33,6 @@ public class ResetPasswordServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        
-        
-        
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         String url = "/account_activity.jsp";
@@ -44,13 +41,19 @@ public class ResetPasswordServlet extends HttpServlet {
         if (action == null) {
             action = "reset";
         }
-        if (action.equals("reset")) {
-
+        
+        if (action.equals("add")) {
+        url = "/login.jsp";}
+        
+        else if(action.equals("reset")){
+            String username = request.getParameter("username");
             String password = request.getParameter("password");
             String message;
             url = "/account_activity.jsp";
+        
+        
             if(user == null)
-                url="/login.jsp";
+                url="/password_reset.jsp";
             
             user.setPassword(password);
             message = "";
@@ -67,6 +70,41 @@ public class ResetPasswordServlet extends HttpServlet {
         
         
     }
+         /*  HttpSession session = request.getSession();
+        
+        String message = "";
+        String url;
+        
+        
+        //String username = (String)session.getAttribute("username");
+        User user = (User)session.getAttribute("user"); 
+        String newPassword = (String)request.getParameter("newPassword");
+        
+        
+        if(newPassword == null || newPassword.isEmpty()){
+            
+            url="/password_reset.jsp";
+            message ="Please fill in both boxes";
+        }
+        else{
+         user.setPassword(newPassword);    
+         session.setAttribute("user",user);
+         
+        // UserDB.update(user);
+         
+        url="/Account_activity.jsp";
+        }
+        
+        
+         
+             
+             
+                     
+      
+        request.setAttribute("message",message);
+        getServletContext().getRequestDispatcher(url)
+                    .forward(request, response); 
+    }*/
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

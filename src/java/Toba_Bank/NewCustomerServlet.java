@@ -45,53 +45,60 @@ public class NewCustomerServlet extends HttpServlet {
         String email = request.getParameter("email");
         
          //temp username and password
-        String username = (lastName + zipcode);
-        String password ="wecome1";
+        //String username = (lastName + zipcode);
+        //String password ="wecome1";
+        //HttpSession session = request.getSession();
+        //User user = (User) session.getAttribute("user");
         
-        String url = "/success.jsp";
-         HttpSession session = request.getSession();
+        String url = "/new_customer.jsp";
+         
         
         String message;
         if(firstName.isEmpty() || lastName.isEmpty() || phone.isEmpty() || address.isEmpty()
                 || city.isEmpty() || state.isEmpty() || zipcode.isEmpty() || email.isEmpty() )
                 {
             message = "Please fill out all the form fields.";
-            url = "/new_customer.jsp"; 
+           // url = "/new_customer.jsp"; 
             request.setAttribute("message", message);
             
             
         }
         
-        else{  
-              url = "/success.jsp";
-            User user = (User)request.getAttribute("user");
-            if(user == null)
-            {
-                user = new User();
-                user.setAddress(address);
-                user.setCity(city);
-                user.setEmail(email);
-                user.setFirstName(firstName);
-                user.setLastName(lastName);
-                user.setPassword(password);
-                user.setPhone(phone);
-                user.setState(state);
-                user.setUsername(username);
-                user.setPassword(password);
-                request.setAttribute("user", user);
+        else{ 
+            
+            String username = (lastName + zipcode);
+            String password ="wecome1";
+            
+            HttpSession session = request.getSession();
+            User user = new User(firstName, lastName, phone, address,
+                                    city, state, zipcode, email);
+            session.setAttribute("user", user);
+              //url = "/success.jsp";
+              
+      
+           // User user = (User)request.getAttribute("user");
+        
+       
+                
+                
+                
+                //HttpSession session = request.getSession();
+               // User user = (User) session.getAttribute("user");
+                url = "/success.jsp";
             }
 
-        }
+    
        
         
         
      getServletContext().getRequestDispatcher(url).forward(request, response);
-        try (PrintWriter out = response.getWriter()) {
+    }
+        //try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-        }
+       // }
        
 
-    }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -131,8 +138,8 @@ public class NewCustomerServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
+
 
 
 
