@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import toba.data.UserDB;
 
 /**
  *
@@ -44,11 +45,22 @@ public class NewCustomerServlet extends HttpServlet {
         String zipcode = request.getParameter("zipcode");
         String email = request.getParameter("email");
         
-         //temp username and password
-        //String username = (lastName + zipcode);
-        //String password ="wecome1";
-        //HttpSession session = request.getSession();
-        //User user = (User) session.getAttribute("user");
+         //Store Data in User object
+         User user = new User(firstName,lastName,phone,address,city,state,zipcode,email);
+         //Validate the parameters
+         if (UserDB.emailExists(user.getEmail())){
+        String message = "This account already exists.<br>" +
+                 "Please re-enter all fields.";
+         String url ="/index.jsp";
+                 }
+    else{
+            String message ="";
+            String url = "/success.jsp";
+            UserDB.insert(user);
+            }
+        
+         
+         
         
         String url = "/new_customer.jsp";
          
@@ -67,13 +79,12 @@ public class NewCustomerServlet extends HttpServlet {
         else{ 
             
             String username = (lastName + zipcode);
-            String password ="wecome1";
+            String password ="welcome1";
             
             HttpSession session = request.getSession();
-            User user = new User(firstName, lastName, phone, address,
-                                    city, state, zipcode, email);
+            //User user = new User(firstName, lastName, phone, address, city, state, zipcode, email);
             session.setAttribute("user", user);
-              //url = "/success.jsp";
+              url = "/success.jsp";
               
       
            // User user = (User)request.getAttribute("user");
@@ -84,7 +95,8 @@ public class NewCustomerServlet extends HttpServlet {
                 
                 //HttpSession session = request.getSession();
                // User user = (User) session.getAttribute("user");
-                url = "/success.jsp";
+                //url = "/success.jsp";
+                
             }
 
     
