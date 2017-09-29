@@ -31,7 +31,7 @@
         
         <form action="NewCustomer" method ="post">
             
-            <input type="hidden" name="action" value="add">
+            <input type="hidden" name="action" value="sign_up">
             
             <label>First Name</label>
             <input type ="text" name ="firstName"><br>

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/TOBA">
-  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" logAbandoned="true" maxActive="100" maxIdle="30" maxWait="10000" name="jdbc/TOBA" password="sesame" removeAbandoned="true" removeAbandonedTimeout="60" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/toba?autoReconnect=true" username="root"/>
-  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="jdbc/toba" password="" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/toba?zeroDateTimeBehavior=convertToNull" username="root"/>
-</Context>
+  <Resource auth="Container" 
+            driverClassName="com.mysql.jdbc.Driver" 
+            logAbandoned="true" maxActive="100" maxIdle="30" 
+            maxWait="10000" name="jdbc/TOBA" password="sesame" 
+            removeAbandoned="true" removeAbandonedTimeout="60" 
+            type="javax.sql.DataSource" 
+            url="jdbc:mysql://localhost:3306/tobabank?autoReconnect=true" username="root"/>
+ </Context>

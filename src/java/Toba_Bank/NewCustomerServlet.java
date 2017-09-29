@@ -33,8 +33,6 @@ public class NewCustomerServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-          
-        
         
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -45,72 +43,55 @@ public class NewCustomerServlet extends HttpServlet {
         String zipcode = request.getParameter("zipcode");
         String email = request.getParameter("email");
         
-         //Store Data in User object
-         User user = new User(firstName,lastName,phone,address,city,state,zipcode,email);
-         //Validate the parameters
-         if (UserDB.emailExists(user.getEmail())){
-        String message = "This account already exists.<br>" +
-                 "Please re-enter all fields.";
-         String url ="/index.jsp";
-                 }
-    else{
-            String message ="";
-            String url = "/success.jsp";
-            UserDB.insert(user);
-            }
-        
-         
-         
-        
-        String url = "/new_customer.jsp";
-         
-        
+         //temp username and password
+        String username = (lastName + zipcode);
+        String password ="welcome1";
+        String url = "/success.jsp";
+        HttpSession session = request.getSession();
         String message;
-        if(firstName.isEmpty() || lastName.isEmpty() || phone.isEmpty() || address.isEmpty()
-                || city.isEmpty() || state.isEmpty() || zipcode.isEmpty() || email.isEmpty() )
-                {
+        
+        
+        if (firstName.isEmpty() || lastName.isEmpty()|| phone.isEmpty()|| address.isEmpty()
+                        || city.isEmpty()|| state.isEmpty()|| zipcode.isEmpty()|| email.isEmpty()){
             message = "Please fill out all the form fields.";
-           // url = "/new_customer.jsp"; 
-            request.setAttribute("message", message);
             
-            
-        }
         
-        else{ 
-            
-            String username = (lastName + zipcode);
-            String password ="welcome1";
-            
-            HttpSession session = request.getSession();
-            //User user = new User(firstName, lastName, phone, address, city, state, zipcode, email);
-            session.setAttribute("user", user);
-              url = "/success.jsp";
-              
-      
-           // User user = (User)request.getAttribute("user");
-        
-       
-                
-                
-                
-                //HttpSession session = request.getSession();
-               // User user = (User) session.getAttribute("user");
-                //url = "/success.jsp";
+            url = "/new_customer.jsp"; 
+             request.setAttribute("message", message);
                 
             }
-
-    
+        
+        else
+        {
+            url = "/success.jsp";
+            User user = (User)request.getAttribute("user");
+            
+            if(user == null)
+            {
+                user = new User();
+                user.setAddress(address);
+                user.setCity(city);
+                user.setEmail(email);
+                user.setFirstName(firstName);
+                user.setLastName(lastName);
+                user.setPassword(password);
+                user.setPhone(phone);
+                user.setState(state);
+                user.setUsername(username);
+                user.setPassword(password);
+                request.setAttribute("user", user);
+            }
+            UserDB.insert(user);
+        }
        
         
-        
-     getServletContext().getRequestDispatcher(url).forward(request, response);
-    }
-        //try (PrintWriter out = response.getWriter()) {
+        getServletContext().getRequestDispatcher(url).forward(request, response);
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-       // }
+        }
        
 
-    
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -150,8 +131,5 @@ public class NewCustomerServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }
-
-
-
-

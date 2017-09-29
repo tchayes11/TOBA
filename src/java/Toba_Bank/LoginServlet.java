@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import toba.data.UserDB;
 /**
  *
  * @author TinaCH
@@ -41,7 +42,8 @@ public class LoginServlet extends HttpServlet {
         if(user.getUsername().equals("username")&&user.getPassword().equals("password")){
             session.setAttribute("user", user);
            //getServletContext().getRequestDispatcher(url).forward(request, response);
-          url="/account_activity.jsp";  
+          url="/account_activity.jsp";
+         // UserDB.insert(user);
         
         }
         else{

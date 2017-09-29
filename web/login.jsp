@@ -29,7 +29,7 @@
         <h3>Login</h3>
         <form action="Login" method ="post">
             
-            <input type="hidden" name="action" value="add">
+            <input type="hidden" name="action" value="login">
             
             <label>User Name:</label>
             <input type ="text" name ="username" required ><br>

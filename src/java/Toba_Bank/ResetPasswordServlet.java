@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import toba.data.UserDB;
 
 
 /**
@@ -42,7 +43,7 @@ public class ResetPasswordServlet extends HttpServlet {
             action = "reset";
         }
         
-        if (action.equals("add")) {
+        if (action.equals("login")) {
         url = "/login.jsp";}
         
         else if(action.equals("reset")){
@@ -58,9 +59,9 @@ public class ResetPasswordServlet extends HttpServlet {
             user.setPassword(password);
             message = "";
             session.setAttribute("user", user);
-
+            // UserDB.update(user);
             request.setAttribute("message", message);
-            //UserDB.update(user);
+            
         }
 
         getServletContext()
@@ -90,7 +91,7 @@ public class ResetPasswordServlet extends HttpServlet {
          user.setPassword(newPassword);    
          session.setAttribute("user",user);
          
-        // UserDB.update(user);
+        
          
         url="/Account_activity.jsp";
         }
