@@ -8,16 +8,17 @@ package Toba_Bank;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import toba.data.UserDB;
+
 /**
  *
  * @author TinaCH
  */
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "ReportsServlet", urlPatterns = {"/ReportsServlet"})
+public class ReportsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,36 +32,20 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-         String url = "/index.jsp";
-        String action = request.getParameter("action");
-        
-        if(action.equals("login")){
-        
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        
-        if (user == null){
-            url = "/new_customer.jsp";
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ReportsServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ReportsServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
+    }
 
-        else if (user.getUsername().equals(username) && user.getPassword().equals(password)){
-            session.setAttribute("user", user);
-            url = "/account_activity.jsp";
-        }
-        
-        else {
-            url = "/login_failure.jsp";
-        }
-    }
-        getServletContext()
-            .getRequestDispatcher(url).forward(request,
-            response);
-    }
-    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -100,4 +85,4 @@ public class LoginServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    } 
+}
